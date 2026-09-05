@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Circle of Fifths — Music Theory Reference</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Circle of Fifths</h1>
+    <p class="tagline">Click a key to see and hear its chords. No notation required.</p>
+  </header>
+
+  <main class="layout">
+    <section class="circle-wrap" aria-label="Circle of fifths">
+      <svg id="circle" viewBox="0 0 480 480" role="group"></svg>
+    </section>
+
+    <section class="panel" aria-live="polite">
+      <div class="panel-inner" id="panel-inner">
+      <div class="panel-head">
+        <h2 id="key-title">Pick a key</h2>
+        <div class="mode-toggle" role="tablist" aria-label="Major or minor">
+          <button id="btn-major" class="mode-btn active" role="tab" aria-selected="true">Major</button>
+          <button id="btn-minor" class="mode-btn" role="tab" aria-selected="false">Minor</button>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Panel view">
+        <button id="tab-main" class="tab-btn active" role="tab" aria-selected="true">Chords in key</button>
+        <button id="tab-gloss" class="tab-btn" role="tab" aria-selected="false" disabled title="Pick a key first">Other colours</button>
+      </div>
+
+      <div id="view-main" class="view">
+        <p id="panel-hint" class="hint">
+          Every key is built from 7 chords. The Roman numeral tells you the chord’s job;
+          uppercase = major, lowercase = minor, ° = diminished.
+        </p>
+
+        <div id="chords" class="chords"></div>
+
+        <div class="actions">
+          <button id="play-prog" class="prog-btn" disabled>▶ Play I – IV – V – vi</button>
+        </div>
+
+        <div id="relationships" class="relationships"></div>
+
+        <div class="legend">
+          <span class="chip key">Key</span>
+          <span class="chip maj">Major</span>
+          <span class="chip min">Minor</span>
+          <span class="chip dim">Diminished</span>
+          <span class="chip borrow">Borrowable</span>
+        </div>
+      </div>
+
+      <div id="view-gloss" class="view" hidden>
+        <p class="hint">These aren’t tied to one key — they’re flavours you can put on the tonic of whatever key you picked. Click to hear each.</p>
+        <div id="glossary" class="glossary"></div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Tip: the two keys touching your selection on the wheel are its <strong>IV</strong> and <strong>V</strong> —
+    the three most common chords in any song sit right next to each other.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
