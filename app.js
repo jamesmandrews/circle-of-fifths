@@ -294,6 +294,17 @@ function romanMarkup(rn) {
          (fig ? '<sup class="fig">' + fig + '</sup>' : '');
 }
 
+// Same treatment for the chord name: root at full size, extension small and
+// raised, the way a lead sheet prints it. The suffix comes from SHAPE_SUFFIX
+// rather than being re-parsed out of the string, so accidentals in the root
+// (Db, F#) can never be mistaken for part of the extension.
+function chordMarkup(name, shape) {
+  const suffix = SHAPE_SUFFIX[shape] || '';
+  const root = suffix && name.endsWith(suffix) ? name.slice(0, -suffix.length) : name;
+  return '<span class="root">' + root + '</span>' +
+         (suffix ? '<sup class="ext">' + suffix + '</sup>' : '');
+}
+
 function currentTonic() {
   if (selectedIndex === null) return { pc: 0, name: 'C' };
   const entry = CIRCLE[selectedIndex];
@@ -452,7 +463,7 @@ function addGrid(parent) {
 function addChord(grid, rn, name, qClass, rootPc, shape, src, res) {
   const c = document.createElement('button');
   c.className = 'chord q-' + qClass + (src ? ' borrowed' : '');
-  c.innerHTML = `<div class="rn">${romanMarkup(rn)}</div><div class="name">${name}</div>` +
+  c.innerHTML = `<div class="rn">${romanMarkup(rn)}</div><div class="name">${chordMarkup(name, shape)}</div>` +
                 (src ? `<div class="src">${src}</div>` : '') +
                 (res ? `<div class="res-hint">${res}</div>` : '');
   c.addEventListener('click', () => playChord(rootPc, shape));
