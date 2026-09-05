@@ -414,11 +414,16 @@ function renderGlossary() {
 }
 
 // Scale the panel content down so it never overflows the viewport (no scrolling).
+// Mobile opts out: the page scrolls there, so shrinking would only make the text
+// unreadable. Breakpoint must match the max-width: 700px block in styles.css.
+const MOBILE = window.matchMedia('(max-width: 700px)');
+
 function fitPanel() {
   const panel = document.querySelector('.panel');
   const inner = document.getElementById('panel-inner');
   if (!panel || !inner) return;
   inner.style.transform = 'none';
+  if (MOBILE.matches) return;
   const cs = getComputedStyle(panel);
   const padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
   const avail = panel.clientHeight - padY;
@@ -487,6 +492,7 @@ function setTab(name) {
 document.getElementById('tab-main').addEventListener('click', () => setTab('main'));
 document.getElementById('tab-gloss').addEventListener('click', () => setTab('gloss'));
 window.addEventListener('resize', () => requestAnimationFrame(fitPanel));
+MOBILE.addEventListener('change', () => requestAnimationFrame(fitPanel));
 
 initSamples();
 buildCircle();

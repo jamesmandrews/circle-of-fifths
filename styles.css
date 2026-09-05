@@ -24,7 +24,10 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  -webkit-tap-highlight-color: transparent;
 }
+
+button, .segment { touch-action: manipulation; }
 
 .topbar { flex: 0 0 auto; text-align: center; padding: 16px 16px 6px; }
 .topbar h1 { margin: 0; font-size: 1.7rem; letter-spacing: .5px; }
@@ -71,7 +74,9 @@ body {
 }
 .seg-major .seg-shape { fill: #232b3a; }
 .seg-minor .seg-shape { fill: #1b2130; }
-.segment:hover .seg-shape { fill: #2c3648; }
+@media (hover: hover) {
+  .segment:hover .seg-shape { fill: #2c3648; }
+}
 
 .segment.selected .seg-shape { fill: var(--accent); filter: drop-shadow(0 0 8px rgba(185,139,255,.55)); }
 .segment.in-maj .seg-shape { fill: var(--maj); }
@@ -140,7 +145,9 @@ body {
   cursor: pointer;
   transition: transform .08s ease, border-color .15s ease, background .15s ease;
 }
-.chord:hover { transform: translateY(-2px); }
+@media (hover: hover) {
+  .chord:hover { transform: translateY(-2px); }
+}
 .chord:active { transform: translateY(0); }
 .chord .rn { font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
 .chord .rn .num { font-family: Georgia, "Times New Roman", "Cambria", serif; letter-spacing: .5px; }
@@ -166,7 +173,9 @@ body {
   width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line);
   background: var(--bg-elev); color: var(--text); font-size: .95rem; font-weight: 600; cursor: pointer;
 }
-.prog-btn:hover:not(:disabled) { background: #263042; }
+@media (hover: hover) {
+  .prog-btn:hover:not(:disabled) { background: #263042; }
+}
 .prog-btn:disabled { opacity: .4; cursor: default; }
 .prog-btn.playing { background: var(--accent); color: #fff; border-color: var(--accent); }
 
@@ -198,7 +207,9 @@ body {
   border-radius: 10px; padding: 10px 12px; cursor: pointer; color: var(--text);
   transition: background .12s ease;
 }
-.gloss-row:hover { background: #263042; }
+@media (hover: hover) {
+  .gloss-row:hover { background: #263042; }
+}
 .gloss-main { display: flex; align-items: baseline; gap: 10px; }
 .gloss-name { font-size: 1.05rem; font-weight: 700; }
 .gloss-label { font-size: .78rem; color: var(--text-dim); }
@@ -210,3 +221,50 @@ body {
 .foot { flex: 0 0 auto; text-align: center; color: var(--text-dim); font-size: .8rem; padding: 8px 20px; max-width: 720px; margin: 0 auto; line-height: 1.45; }
 .foot strong { color: var(--text); }
 @media (max-height: 620px) { .foot { display: none; } }
+
+/* ---- Mobile: the one-screen constraint is a desktop idea. Here we scroll. ----
+   Everything above pins the app to the viewport and lets fitPanel() shrink the
+   panel to fit. On a phone that bottoms out near scale(0.4) and the text becomes
+   unreadable, so below this width we release the height locks and scroll instead.
+   fitPanel() bails out on the same breakpoint (see app.js). */
+@media (max-width: 700px) {
+  body {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
+  .layout {
+    margin: 4px auto 0;
+    padding: 0 14px;
+    overflow: visible;
+  }
+
+  .circle-wrap { overflow: visible; }
+
+  /* Override the 860px rule's 34vh cap — on a phone that shrinks the wheel
+     until its labels are ~7px. Width-bound it instead. */
+  #circle { max-width: min(92vw, 420px); }
+
+  /* Labels are in viewBox units, so they scale down with the SVG. Bump them
+     back up to stay legible at ~360px rendered. */
+  .seg-label { font-size: 19px; }
+  .seg-minor .seg-label { font-size: 15px; }
+  #center-key { font-size: 32px; }
+  #center-sub { font-size: 14px; }
+  .role-tag { font-size: 12px; }
+
+  .panel {
+    max-height: none;
+    overflow: visible;
+    padding: 16px 14px;
+  }
+
+  /* Comfortable tap targets */
+  .chords { grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)); }
+  .chord { padding: 14px 8px; }
+  .mode-btn { padding: 10px 18px; }
+  .tab-btn { padding: 11px 10px; }
+
+  .foot { padding: 12px 20px 20px; }
+}
