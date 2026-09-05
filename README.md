@@ -166,9 +166,9 @@ attribution.
 
 ## Licence
 
-Copyright © 2026 James M Andrews. All rights reserved.
+Copyright © 2026 James M Andrews. All rights reserved. See [`LICENSE`](LICENSE).
 
-This applies to the code and content of this project. The piano samples in `assets/piano/`
-are third-party work under CC BY 3.0 and keep their own terms — the attribution is shown
-in the footer of the app itself, not only here, because the credit has to travel with the
-work wherever it's served.
+Proprietary — no licence is granted by the source being public. The piano samples in
+`assets/piano/` are the exception: they are third-party work under CC BY 3.0 and keep
+their own terms, which is why the attribution is shown in the footer of the app itself
+and not only here. The credit has to travel with the work wherever it's served.

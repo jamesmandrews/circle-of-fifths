@@ -1,0 +1,32 @@
+Copyright © 2026 James M Andrews. All rights reserved.
+
+This software and its accompanying content (the "Work") are proprietary. No
+licence is granted, express or implied, by publication of the Work's source
+code or by its availability at any public URL.
+
+Without prior written permission from the copyright holder, you may not copy,
+modify, merge, publish, distribute, sublicense, sell, host, or create derivative
+works from the Work, in whole or in part.
+
+Viewing the source and running the Work in a web browser for personal,
+non-commercial evaluation is permitted.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER
+BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+WORK OR THE USE OR OTHER DEALINGS IN THE WORK.
+
+
+THIRD-PARTY CONTENT
+-------------------
+
+The terms above do not apply to the following, which is third-party work
+included under its own licence and which remains governed by that licence:
+
+  assets/piano/*.mp3
+    Salamander Grand Piano by Alexander Holm.
+    Licensed under Creative Commons Attribution 3.0 Unported (CC BY 3.0).
+    https://creativecommons.org/licenses/by/3.0/
+    https://archive.org/details/SalamanderGrandPianoV3
