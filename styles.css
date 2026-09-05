@@ -234,6 +234,24 @@ button, .segment { touch-action: manipulation; }
 .foot strong { color: var(--text); }
 @media (max-height: 620px) { .foot { display: none; } }
 
+/* Attribution + copyright. Unlike .foot this is never hidden — CC BY requires
+   the credit to travel with the work. */
+.credits {
+  flex: 0 0 auto;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: .68rem;
+  line-height: 1.6;
+  padding: 0 20px 10px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.credits a { color: var(--text-dim); text-decoration: underline; text-underline-offset: 2px; }
+.credits .sep { opacity: .5; margin: 0 3px; }
+@media (hover: hover) {
+  .credits a:hover { color: var(--text); }
+}
+
 /* ---- Mobile: the one-screen constraint is a desktop idea. Here we scroll. ----
    Everything above pins the app to the viewport and lets fitPanel() shrink the
    panel to fit. On a phone that bottoms out near scale(0.4) and the text becomes
@@ -285,5 +303,6 @@ button, .segment { touch-action: manipulation; }
   .mode-btn { padding: 10px 18px; }
   .tab-btn { padding: 11px 10px; }
 
-  .foot { padding: 12px 20px 20px; }
+  .foot { padding: 12px 20px 8px; }
+  .credits { padding-bottom: 22px; }
 }

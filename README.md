@@ -1,5 +1,7 @@
 # Circle of Fifths
 
+**[Live demo →](https://jamesmandrews.github.io/circle-of-fifths/)**
+
 An interactive circle of fifths for people who don't read music. Click a key on the
 wheel and you get every chord that belongs to it — the seven diatonic triads, their
 7th-chord versions, and the common borrowed chords — each one a button that plays a
@@ -164,6 +166,9 @@ attribution.
 
 ## Licence
 
-Not yet specified. Add a `LICENSE` file before publishing this anywhere public — note
-that the CC BY 3.0 terms on the piano samples apply regardless of what you choose for
-the code.
+Copyright © 2026 James M Andrews. All rights reserved.
+
+This applies to the code and content of this project. The piano samples in `assets/piano/`
+are third-party work under CC BY 3.0 and keep their own terms — the attribution is shown
+in the footer of the app itself, not only here, because the credit has to travel with the
+work wherever it's served.
